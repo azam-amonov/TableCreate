@@ -19,6 +19,12 @@ export class Home extends Component {
                                     <th>Company</th>
                                     <th>Actions</th>
                                 </tr>
+                                <tr>
+                                    <td><input type = 'text' value = {value.name} onChange ={(e) => {value.updateValue(e, 'title')}} /></td> 
+                                    <td><input type = 'text' value = {value.info} onChange ={(e) => {value.updateValue(e, 'info')}} /></td> 
+                                    <td><input type = 'text' value = {value.price} onChange ={(e) => {value.updateValue(e, 'price')}} /></td> 
+                                    <td><input type = 'text' value = {value.company} onChange ={(e) => {value.updateValue(e, 'company')}} /></td> 
+                                </tr>
                                 {value.AllData.map((product, index) => {
                                     return (
                                         <tr key={index} className={index % 2 === 0 ? 'even-row' : 'odd-row'}>

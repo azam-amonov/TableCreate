@@ -1,9 +1,20 @@
-import React, {Component} from 'react';
+import React, {Component, useState} from 'react';
 import {ProductConsumer} from "../Context";
 import {Table, Button} from "react-bootstrap";
+import instance from "../qizigiyoq";
 
 export class Home extends Component {
     render() {
+        const [data, setData] = useState(null)
+        try {
+            instance("TransactionResult")
+                .then(response => setData(response))
+        }catch (err) {
+            console.log(err);
+        }
+        
+        console.log(data);
+        
         return (
             <div className="container">
                 <h3>CRUD Operations</h3>

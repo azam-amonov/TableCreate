@@ -20,7 +20,7 @@ export class Home extends Component {
                                     <th>Actions</th>
                                 </tr>
                                 <tr>
-                                    <td><input type = 'text' value = {value.name} onChange ={(e) => {value.updateValue(e, 'title')}} /></td> 
+                                    <td><input type = 'text' value = {value.name} onChange ={(e) => {value.updateValue(e, 'name')}} /></td> 
                                     <td><input type = 'text' value = {value.info} onChange ={(e) => {value.updateValue(e, 'info')}} /></td> 
                                     <td><input type = 'text' value = {value.price} onChange ={(e) => {value.updateValue(e, 'price')}} /></td> 
                                     <td><input type = 'text' value = {value.company} onChange ={(e) => {value.updateValue(e, 'company')}} /></td>

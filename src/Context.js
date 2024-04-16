@@ -52,7 +52,7 @@ class ProductProvider extends Component {
             const SavedRecord = this.state.AllData;
             const index = SavedRecord.indexOf(this.getRecord(id));
             const Record = SavedRecord[index];
-            Record['title'] = this.state.updateEdit[1];
+            Record['name'] = this.state.updateEdit[1];
             Record['info'] = this.state.updateEdit[2];
             Record['price'] = this.state.updateEdit[3];
             Record['company'] = this.state.updateEdit[4];
@@ -60,7 +60,27 @@ class ProductProvider extends Component {
                 AllData: [...this.state.AllData],
                 id : "", name : "", info : "", price : "", company : ""
             })
-        } 
+        } else {
+            const MaxId = Math.max(...this.state.AllData.map(item => item.id));
+            const id = MaxId + 1;
+            const newArr = [];
+            newArr['name'] = this.state.updateEdit[1];
+            newArr['info'] = this.state.updateEdit[2];
+            newArr['price'] = this.state.updateEdit[3];
+            newArr['company'] = this.state.updateEdit[4];
+            this.setState({
+                AllData: [...this.state.AllData, newArr],
+                id : "", name : "", info : "", price : "", company : ""
+            })
+            
+        }
+    }
+    
+    onDelete = (id) => {
+        const tempProduct = this.state.AllData.filter(item => item.id !== id);
+        this.setState({
+            AllData : tempProduct 
+        })
     }
     render() {
         return (
@@ -69,6 +89,7 @@ class ProductProvider extends Component {
                     onEdit : this.onEdit,
                     updateValue : this.updateValue,
                     onSave : this.onSave,
+                    onDelete: this.onDelete
                 }}>
                 {this.props.children}
             </ProductContext.Provider>
